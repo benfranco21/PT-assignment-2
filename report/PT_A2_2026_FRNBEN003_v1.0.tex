@@ -1,0 +1,724 @@
+%                   %%%%% Preamble %%%%%
+% Load packages
+% Minimum preamble: 
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{listings}
+\usepackage{siunitx}
+\geometry{margin=1in}
+\usepackage{subcaption}
+\usepackage{bm}
+\graphicspath{{images/}}
+\usepackage[english]{babel}       % Controls language-specific typesetting rules
+\usepackage{longtable}            % Allows tables to extend over multiple pages
+\usepackage[utf8]{inputenc}      % Allows extended UTF-8 character input (less stable than utf8)
+\usepackage{amsmath}              % Provides advanced mathematical typesetting features
+\usepackage{parskip}              % Removes paragraph indentation and adds vertical space between paragraphs
+\usepackage[colorlinks]{hyperref} % Creates hyperlinks in the PDF (internal and external)
+\hypersetup{                      % Customizes link colors and styles
+  colorlinks = true,
+  linkcolor =black,
+  anchorcolor = black,
+  citecolor = black,
+  urlcolor = black
+}            
+\usepackage{url}                  % Formats URLs properly in text
+\def\UrlBreaks{\do\/\do-}         % Defines where long URLs can break across lines
+\usepackage{fancyhdr}             % Enables custom headers and footers
+\usepackage{vmargin}              % Simplifies setting page margins
+\usepackage{listings}
+\lstset{
+  language=R,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  commentstyle=\color{gray},
+  stringstyle=\color{red},
+  breaklines=true,
+  numbers=none,
+  numberstyle=\tiny,
+  backgroundcolor=\color{gray!10}
+}
+
+% Syntax highlighting for source code using Pygments
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{geometry}
+
+
+\geometry{margin=1in}
+\usepackage{appendix}             % Provides better control over appendix formatting
+\usepackage{booktabs}             % Enhances table formatting with professional-quality rules
+\usepackage{mathtools}            % Extends amsmath with additional math features
+\usepackage{comment}    % Allows blocks of text/code to be commented out
+                % Imports and displays SVG graphics
+             % Creates subfigures within a single figure environment
+\usepackage{xcolor}               % Adds color support for text, tables, and graphics
+
+\usepackage[raggedrightboxes]{ragged2e} % Provides improved ragged text alignment
+\usepackage{nomencl}              % Creates a list of symbols/abbreviations (nomenclature)
+\makenomenclature                 % Activates nomenclature collection
+\usepackage{multirow}             % Allows table cells to span multiple rows
+\usepackage[font=footnotesize,labelfont=bf]{caption} % Customizes caption appearance
+\usepackage{natbib}               % Provides flexible citation styles (author-year, numeric)
+\usepackage{soul}                 % Enables underlining, highlighting, and letter spacing
+\usepackage{setspace}               % Line spacing control
+\setstretch{1.4}                    % Between single and one-and-a-half spacing
+
+\usepackage[T1]{fontenc}          % Improves font encoding (better hyphenation, accented characters)
+\usepackage{subfiles}             % Supports multi-file LaTeX projects (modular documents)
+\usepackage{float}                % Displays images in the location they are placed in text by using "H" in the calling command
+\usepackage{subcaption} %Allows for the display of figures side by side
+\usepackage{geometry} % adjusting margins
+\usepackage{longtable}
+
+% Set margin parameters
+\setmarginsrb{2.5 cm}{2 cm}{2.5 cm}{2 cm}{0.5 cm}{1 cm}{0.5 cm}{1 cm}
+
+
+% Define footer
+\cfoot{\thepage}
+
+% Define a font/text style - using \code{text} will cause 'text' to be printed in a monospaced font surrounded by a grey box 
+\definecolor{light-gray}{gray}{0.95}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+% Use arabic numerical system for page numbering
+\pagenumbering{arabic}
+
+
+% ---------- Layout tightening (no content changes) ----------
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{1.6ex plus .5ex minus .2ex}{0.8ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{1.4ex plus .4ex minus .2ex}{0.6ex plus .2ex}
+\titlespacing*{\subsubsection}{0pt}{1.2ex plus .3ex minus .2ex}{0.5ex plus .2ex}
+\titlespacing*{\paragraph}{0pt}{1.0ex plus .3ex minus .2ex}{0.8em}
+\setlength{\parskip}{0.5ex plus 0.2ex minus 0.1ex}
+\usepackage{etoolbox}
+\appto\normalsize{%
+  \setlength{\abovedisplayskip}{5pt plus 2pt minus 2pt}%
+  \setlength{\belowdisplayskip}{5pt plus 2pt minus 2pt}%
+  \setlength{\abovedisplayshortskip}{2pt plus 1pt}%
+  \setlength{\belowdisplayshortskip}{3pt plus 1pt minus 1pt}}
+\setlength{\jot}{2pt}
+\numberwithin{equation}{section}
+
+\begin{document} % End of preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+	\centering
+    \vspace*{0.3 cm}
+    \includegraphics[scale = 0.2]{Figures/logo.jpg}\\[0.8 cm]	% University Logo
+    \textsc{\LARGE University of Cape Town}\\[1.5 cm]	% University Name
+	\textsc{\Large Portfolio Theory}\\[0.5 cm]				
+	\rule{\linewidth}{0.2 mm} \\[0.4 cm]
+	{ \huge \bfseries Assignment 2}\\
+	\rule{\linewidth}{0.2 mm} \\[1.5 cm]
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft} \large
+			\emph{Author:}\\
+            Benjamin Franco
+			\end{flushleft}
+			\end{minipage}~
+			\begin{minipage}{0.4\textwidth}
+			\begin{flushright} \large
+			\emph{Student Number:} \\
+            FRNBEN003
+            
+            
+            
+		\end{flushright}
+	\end{minipage}\\[0.5 cm]
+	
+ 
+	\vfill
+
+\newpage
+
+
+\end{titlepage}
+
+\section*{Question 1: The Mutual Fund Separation Theorem}
+\addcontentsline{toc}{section}{Question 1: The Mutual Fund Separation Theorem}
+\setcounter{section}{1}
+\setcounter{subsection}{0}
+\setcounter{equation}{0}
+\label{sec:q1}
+
+\subsection{Deriving the separation theorem}
+\label{sec:q1-1}
+
+I start from the mutual fund Lagrangian in equation (1),
+\begin{equation}
+  L = \bm{\omega}^{T}\bm{\mu} - \frac{\gamma}{2}\bm{\omega}^{T}\Sigma\bm{\omega} - \lambda\left(\bm{\omega}^{T}\mathbf{1} - 1\right),
+  \label{eq:q1-lagrangian}
+\end{equation}
+where $\bm{\omega}$ is the vector of portfolio weights, $\bm{\mu}$ the vector of expected returns, $\Sigma$ the covariance matrix, $\gamma > 0$ the risk aversion and $\lambda$ the Lagrange multiplier on the budget constraint. The objective is expected return minus a penalty for variance, which is what an investor with exponential utility maximises when returns are normally distributed (Week 4 Lecture 1, slide 4). I assume $\Sigma$ is positive definite, so $\Sigma^{-1}$ exists and is also positive definite.
+
+There is only one constraint and it is an equality, so the Kuhn-Tucker conditions reduce to the ordinary Lagrange first-order conditions.
+
+\paragraph{Step 1: First-order conditions.}
+Using $\partial(\bm{\omega}^{T}\bm{\mu})/\partial\bm{\omega} = \bm{\mu}$, $\partial(\bm{\omega}^{T}\Sigma\bm{\omega})/\partial\bm{\omega} = 2\Sigma\bm{\omega}$ for symmetric $\Sigma$, and $\partial(\bm{\omega}^{T}\mathbf{1})/\partial\bm{\omega} = \mathbf{1}$, differentiating \eqref{eq:q1-lagrangian} with respect to $\bm{\omega}$ and $\lambda$ gives
+\begin{align}
+  \frac{\partial L}{\partial \bm{\omega}} &= \bm{\mu} - \gamma\Sigma\bm{\omega} - \lambda\mathbf{1} = \mathbf{0}, \label{eq:q1-foc-w}\\
+  \frac{\partial L}{\partial \lambda} &= -\left(\bm{\omega}^{T}\mathbf{1} - 1\right) = 0. \label{eq:q1-foc-lambda}
+\end{align}
+
+\paragraph{Step 2: Weights in terms of $\lambda$.}
+Rearranging \eqref{eq:q1-foc-w} and pre-multiplying by $\Sigma^{-1}$ gives
+\begin{equation}
+  \bm{\omega} = \frac{1}{\gamma}\Sigma^{-1}\left(\bm{\mu} - \lambda\mathbf{1}\right).
+  \label{eq:q1-w-lambda}
+\end{equation}
+
+\paragraph{Step 3: Solving for $\lambda$.}
+I substitute \eqref{eq:q1-w-lambda} into the constraint \eqref{eq:q1-foc-lambda}, written as $\mathbf{1}^{T}\bm{\omega} = 1$:
+\begin{align*}
+  \frac{1}{\gamma}\mathbf{1}^{T}\Sigma^{-1}\left(\bm{\mu} - \lambda\mathbf{1}\right) &= 1, \\
+  \mathbf{1}^{T}\Sigma^{-1}\bm{\mu} - \lambda\,\mathbf{1}^{T}\Sigma^{-1}\mathbf{1} &= \gamma.
+\end{align*}
+To keep the notation short I define the two scalars $A = \mathbf{1}^{T}\Sigma^{-1}\bm{\mu}$ and $C = \mathbf{1}^{T}\Sigma^{-1}\mathbf{1}$, following Week 8 Lecture 1, slide 10. $C$ is strictly positive because $\Sigma^{-1}$ is positive definite, so I can divide by it:
+\begin{equation}
+  \lambda = \frac{A - \gamma}{C}.
+  \label{eq:q1-lambda}
+\end{equation}
+This matches equation 11 in Week 4 Lecture 1, slide 5.
+
+\paragraph{Step 4: Eliminating $\lambda$.}
+I substitute \eqref{eq:q1-lambda} back into \eqref{eq:q1-w-lambda}. The step that makes this work is splitting $\lambda\mathbf{1}$ into its two parts before multiplying out, $\bm{\mu} - \lambda\mathbf{1} = \bm{\mu} - \frac{A}{C}\mathbf{1} + \frac{\gamma}{C}\mathbf{1}$, so that
+\begin{equation*}
+  \bm{\omega}^{*} = \frac{1}{\gamma}\Sigma^{-1}\left(\bm{\mu} - \frac{A}{C}\mathbf{1}\right) + \frac{1}{\gamma}\cdot\frac{\gamma}{C}\,\Sigma^{-1}\mathbf{1}.
+\end{equation*}
+The $\gamma$ in the second term cancels with the $1/\gamma$ in front. Writing $A$ and $C$ out in full and putting the $\gamma$-free term first gives
+\begin{equation}
+  \boxed{\;\bm{\omega}^{*} = \frac{\Sigma^{-1}\mathbf{1}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}} + \frac{1}{\gamma}\Sigma^{-1}\left(\bm{\mu} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\mu}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right)\;}
+  \label{eq:q1-separation}
+\end{equation}
+which is equation (2) in the brief.
+
+\paragraph{Step 5: Checking it is a maximum.}
+The Hessian of $L$ with respect to $\bm{\omega}$ is $\partial^{2} L/\partial\bm{\omega}\,\partial\bm{\omega}^{T} = -\gamma\Sigma$. Since $\gamma > 0$ and $\Sigma$ is positive definite, the Hessian is negative definite. The objective is therefore strictly concave and \eqref{eq:q1-separation} is the unique maximum.
+
+The first term in \eqref{eq:q1-separation} is the global minimum variance portfolio. It depends only on $\Sigma$, not on the expected returns or on $\gamma$. The second term carries the views on expected returns. The term $A/C$ is the expected return of the minimum variance portfolio (Week 8 Lecture 1, slide 11), so the bracket is each asset's expected return measured relative to that portfolio. Assets expected to beat it are bought and assets expected to lag it are sold.
+
+I checked each step symbolically in SymPy for a general three-asset case (\texttt{verify\_q1.py} in the code bundle).
+
+\subsection{The constraint equation}
+\label{sec:q1-2}
+
+Differentiating the Lagrangian with respect to $\lambda$ gives back $\bm{\omega}^{T}\mathbf{1} = 1$ in \eqref{eq:q1-foc-lambda}. This is the budget constraint. It forces the portfolio to be fully invested, so the weights must add up to one. The multiplier $\lambda$ is the shadow price of this constraint, meaning how much the objective would change if the budget were relaxed slightly.
+
+The separation in \eqref{eq:q1-separation} shows how the constraint is shared between the two funds. For the minimum variance portfolio and the second fund,
+\begin{equation*}
+  \mathbf{1}^{T}\left(\frac{\Sigma^{-1}\mathbf{1}}{C}\right) = \frac{C}{C} = 1,
+  \qquad
+  \mathbf{1}^{T}\,\frac{1}{\gamma}\Sigma^{-1}\left(\bm{\mu} - \frac{A}{C}\mathbf{1}\right) = \frac{1}{\gamma}\left(A - C\cdot\frac{A}{C}\right) = 0.
+\end{equation*}
+The minimum variance portfolio uses up the whole budget by itself (Week 4 Lecture 1, slide 11). The weights of the second fund add up to zero. It is a zero-cost long-short portfolio. It buys some assets and sells others by the same amount, so it moves money between assets without changing the total invested.
+
+This means the constraint holds for every value of $\gamma$. Risk aversion only changes the size of the zero-cost bets. As $\gamma \to \infty$ the investor holds only the minimum variance portfolio, and as $\gamma$ gets smaller the long and short positions grow together. Because the bets net to zero, a small $\gamma$ can mean large short positions even though the portfolio is still fully invested. The budget constraint controls the total amount invested but it does not stop short selling. This is why Part II needs a separate no-short-selling constraint, and why the choice of $\gamma$ there is tied to keeping all weights positive.
+
+\section*{Question 2: The Mutual Fund Separation Theorem in terms of an equilibrium view}
+\addcontentsline{toc}{section}{Question 2: The Mutual Fund Separation Theorem in terms of an equilibrium view}
+\setcounter{section}{2}
+\setcounter{subsection}{0}
+\setcounter{equation}{0}
+\label{sec:q2}
+
+\subsection{Deriving the benchmark, strategic and tactical funds}
+\label{sec:q2-1}
+
+I start from the separation theorem derived in Question 1,
+\begin{equation}
+  \bm{\omega}^{*} = \frac{\Sigma^{-1}\mathbf{1}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}} + \frac{1}{\gamma}\Sigma^{-1}\left(\bm{\mu} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\mu}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right),
+  \label{eq:q2-start}
+\end{equation}
+which is \eqref{eq:q1-separation}. As before I write $C = \mathbf{1}^{T}\Sigma^{-1}\mathbf{1}$, which is a strictly positive scalar. The aim is to bring in a vector of long-term equilibrium views $\bm{\Pi}$ and show that $\bm{\omega}^{*}$ splits into the three funds in equations (4), (5) and (6) of the brief.
+
+A note on notation. I follow the brief, where $\bm{\omega}_{B}$ is the minimum variance portfolio and the policy fund is $\bm{\omega}_{P} = \bm{\omega}_{B} + \bm{\omega}_{S}$. Week 4 Lecture 1 uses $\bm{\omega}_{G}$ for the minimum variance portfolio and calls $\bm{\omega}_{G} + \bm{\omega}_{S}$ the benchmark (slide 13). These are the same objects with different labels.
+
+\paragraph{Step 1: The second term is linear in $\bm{\mu}$.}
+I define the function
+\begin{equation}
+  f(\mathbf{x}) = \Sigma^{-1}\left(\mathbf{x} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbf{x}}{C}\right)
+  \label{eq:q2-f}
+\end{equation}
+for any $n \times 1$ vector $\mathbf{x}$. The second term of \eqref{eq:q2-start} is then $\frac{1}{\gamma} f(\bm{\mu})$. For any two vectors $\mathbf{x}$ and $\mathbf{y}$,
+\begin{align*}
+  f(\mathbf{x} + \mathbf{y})
+  &= \Sigma^{-1}\left(\mathbf{x} + \mathbf{y} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbf{x} + \mathbf{1}^{T}\Sigma^{-1}\mathbf{y}}{C}\right) \\
+  &= \Sigma^{-1}\left(\mathbf{x} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbf{x}}{C}\right) + \Sigma^{-1}\left(\mathbf{y} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbf{y}}{C}\right) \\
+  &= f(\mathbf{x}) + f(\mathbf{y}),
+\end{align*}
+because matrix multiplication distributes over addition. So $f$ is linear, and the second term of \eqref{eq:q2-start} can be split over any sum of vectors.
+
+\paragraph{Step 2: Substituting the equilibrium views.}
+Following the brief I make the substitution $\bm{\mu} = \bm{\mu} + \bm{\Pi} - \bm{\Pi}$, which I group as $\bm{\mu} = \bm{\Pi} + \left(\bm{\mu} - \bm{\Pi}\right)$. This adds nothing to $\bm{\mu}$, but it separates the long-term equilibrium $\bm{\Pi}$ from the current deviation from it, $\bm{\mu} - \bm{\Pi}$ (Week 4 Lecture 1, slide 8, eq.~17). Using the linearity from Step 1, $\frac{1}{\gamma} f(\bm{\mu}) = \frac{1}{\gamma} f(\bm{\Pi}) + \frac{1}{\gamma} f(\bm{\mu} - \bm{\Pi})$, and substituting this into \eqref{eq:q2-start} gives
+\begin{equation}
+  \begin{split}
+  \bm{\omega}^{*}
+  = {} & \underbrace{\frac{\Sigma^{-1}\mathbf{1}}{C}}_{\text{(a)}}
+  + \underbrace{\frac{1}{\gamma}\Sigma^{-1}\left(\bm{\Pi} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}}{C}\right)}_{\text{(b)}} \\
+  & + \underbrace{\frac{1}{\gamma}\Sigma^{-1}\left((\bm{\mu} - \bm{\Pi}) - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi})}{C}\right)}_{\text{(c)}}.
+  \end{split}
+  \label{eq:q2-three-terms}
+\end{equation}
+This matches eq.~18 on Week 4 Lecture 1, slide 9. It remains to show that (a), (b) and (c) are the three funds in the brief.
+
+\paragraph{Step 3: The benchmark fund.}
+Term (a) does not contain $\bm{\mu}$, so the substitution leaves it unchanged. It is the minimum variance portfolio from Question 1,
+\begin{equation}
+  \bm{\omega}_{B} = \frac{\Sigma^{-1}\mathbf{1}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}},
+  \label{eq:q2-wB}
+\end{equation}
+which is equation (4) in the brief.
+
+\paragraph{Step 4: A transpose identity.}
+For any $n \times 1$ vector $\mathbf{g}$, the quantity $\mathbf{g}^{T}\Sigma^{-1}\mathbf{1}$ is a $1 \times 1$ scalar, and a scalar is equal to its own transpose. Since $\Sigma$ is symmetric, $\Sigma^{-1}$ is also symmetric, so $(\Sigma^{-1})^{T} = \Sigma^{-1}$. Therefore
+\begin{equation}
+  \mathbf{g}^{T}\Sigma^{-1}\mathbf{1} = \left(\mathbf{g}^{T}\Sigma^{-1}\mathbf{1}\right)^{T} = \mathbf{1}^{T}\left(\Sigma^{-1}\right)^{T}\mathbf{g} = \mathbf{1}^{T}\Sigma^{-1}\mathbf{g}.
+  \label{eq:q2-transpose}
+\end{equation}
+This is the identity $\mathbf{1}'Z\mathbf{g} = \mathbf{g}'Z\mathbf{1}$ for symmetric $Z$ used on Week 4 Lecture 1, slide 9, which credits Lee (2000).
+
+\paragraph{Step 5: The strategic fund.}
+I start from the brief's form of the strategic fund, equation (5), and show it equals term (b). The product of the outer-product matrix with $\Sigma^{-1}\mathbf{1}$ expands as
+\begin{align*}
+  \left(\bm{\Pi}\mathbf{1}^{T} - \mathbf{1}\bm{\Pi}^{T}\right)\Sigma^{-1}\mathbf{1}
+  &= \bm{\Pi}\left(\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}\right) - \mathbf{1}\left(\bm{\Pi}^{T}\Sigma^{-1}\mathbf{1}\right) \\
+  &= C\,\bm{\Pi} - \mathbf{1}\left(\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}\right).
+\end{align*}
+Both brackets in the first line are scalars, so they can be moved in front of the vectors they multiply. The first bracket is $C$. By \eqref{eq:q2-transpose} with $\mathbf{g} = \bm{\Pi}$, the second bracket is $\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}$, which gives the second line. Dividing by $C$ gives
+\begin{equation*}
+  \frac{\bm{\Pi}\mathbf{1}^{T} - \mathbf{1}\bm{\Pi}^{T}}{C}\,\Sigma^{-1}\mathbf{1}
+  = \bm{\Pi} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}}{C}.
+\end{equation*}
+Pre-multiplying both sides by $\frac{1}{\gamma}\Sigma^{-1}$, the left side is the brief's equation (5) and the right side is term (b). So
+\begin{equation}
+  \bm{\omega}_{S}
+  = \frac{\Sigma^{-1}}{\gamma}\left(\frac{\bm{\Pi}\mathbf{1}^{T} - \mathbf{1}\bm{\Pi}^{T}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right)\Sigma^{-1}\mathbf{1}
+  = \frac{1}{\gamma}\Sigma^{-1}\left(\bm{\Pi} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right),
+  \label{eq:q2-wS}
+\end{equation}
+which is equation (5) in the brief.
+
+\paragraph{Step 6: The tactical fund.}
+I repeat Step 5 with $\bm{\mu} - \bm{\Pi}$ in place of $\bm{\Pi}$. Expanding the outer-product matrix,
+\begin{align*}
+  \left((\bm{\mu} - \bm{\Pi})\mathbf{1}^{T} - \mathbf{1}(\bm{\mu} - \bm{\Pi})^{T}\right)\Sigma^{-1}\mathbf{1}
+  &= (\bm{\mu} - \bm{\Pi})\left(\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}\right) - \mathbf{1}\left((\bm{\mu} - \bm{\Pi})^{T}\Sigma^{-1}\mathbf{1}\right) \\
+  &= C\,(\bm{\mu} - \bm{\Pi}) - \mathbf{1}\left(\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi})\right).
+\end{align*}
+The first bracket in the first line is $C$. By \eqref{eq:q2-transpose} with $\mathbf{g} = \bm{\mu} - \bm{\Pi}$, the second bracket is $\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi})$, which gives the second line.
+Dividing by $C$ and pre-multiplying by $\frac{1}{\gamma}\Sigma^{-1}$ gives
+\begin{equation}
+  \begin{split}
+  \bm{\omega}_{T}
+  &= \frac{\Sigma^{-1}}{\gamma}\left(\frac{(\bm{\mu} - \bm{\Pi})\mathbf{1}^{T} - \mathbf{1}(\bm{\mu} - \bm{\Pi})^{T}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right)\Sigma^{-1}\mathbf{1} \\
+  &= \frac{1}{\gamma}\Sigma^{-1}\left((\bm{\mu} - \bm{\Pi}) - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi})}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right),
+  \end{split}
+  \label{eq:q2-wT}
+\end{equation}
+which is term (c) and equation (6) in the brief.
+
+\paragraph{Step 7: Putting the funds together.}
+Steps 3, 5 and 6 show that terms (a), (b) and (c) in \eqref{eq:q2-three-terms} are $\bm{\omega}_{B}$, $\bm{\omega}_{S}$ and $\bm{\omega}_{T}$. Defining the policy fund as $\bm{\omega}_{P} = \bm{\omega}_{B} + \bm{\omega}_{S}$,
+\begin{equation}
+  \boxed{\;\bm{\omega}^{*} = \bm{\omega}_{P} + \bm{\omega}_{T} = \left(\bm{\omega}_{B} + \bm{\omega}_{S}\right) + \bm{\omega}_{T}\;}
+  \label{eq:q2-result}
+\end{equation}
+which is equation (3) in the brief.
+
+\paragraph{Step 8: The budget of each fund.}
+The brief states that the benchmark and policy funds are fully invested and that the tactical fund is zero-cost. I check this by pre-multiplying each fund by $\mathbf{1}^{T}$, which adds up its weights.
+
+For the benchmark fund, and for the strategic and tactical funds using the right-hand forms of \eqref{eq:q2-wS} and \eqref{eq:q2-wT},
+\begin{align*}
+  \mathbf{1}^{T}\bm{\omega}_{B} &= \frac{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}{C} = \frac{C}{C} = 1, \\
+  \mathbf{1}^{T}\bm{\omega}_{S}
+  &= \frac{1}{\gamma}\left(\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi} - \mathbf{1}^{T}\Sigma^{-1}\mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}}{C}\right)
+  = \frac{1}{\gamma}\left(\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi} - C\,\frac{\mathbf{1}^{T}\Sigma^{-1}\bm{\Pi}}{C}\right) = 0, \\
+  \mathbf{1}^{T}\bm{\omega}_{T}
+  &= \frac{1}{\gamma}\left(\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi}) - C\,\frac{\mathbf{1}^{T}\Sigma^{-1}(\bm{\mu} - \bm{\Pi})}{C}\right) = 0.
+\end{align*}
+It follows that
+\begin{equation*}
+  \mathbf{1}^{T}\bm{\omega}_{P} = \mathbf{1}^{T}\bm{\omega}_{B} + \mathbf{1}^{T}\bm{\omega}_{S} = 1 + 0 = 1,
+  \qquad
+  \mathbf{1}^{T}\bm{\omega}^{*} = \mathbf{1}^{T}\bm{\omega}_{P} + \mathbf{1}^{T}\bm{\omega}_{T} = 1 + 0 = 1.
+\end{equation*}
+The benchmark and policy funds are fully invested, the strategic and tactical funds are zero-cost, and the full portfolio still meets the budget constraint from Question 1. The strategic and tactical funds are both scaled by $1/\gamma$, so the size of their long and short positions is set by the risk aversion, while the benchmark fund does not depend on $\gamma$ at all. This agrees with Week 4 Lecture 1, slides 11, 12 and 14.
+
+I checked each step symbolically in SymPy for a general three-asset case (\texttt{verify\_q2.py} in the code bundle).
+
+\paragraph{Interpretation.}
+Writing out the $(i,j)$ element of the strategic matrix shows what these funds are betting on:
+\begin{equation*}
+  \left(\bm{\Pi}\mathbf{1}^{T} - \mathbf{1}\bm{\Pi}^{T}\right)_{ij} = \Pi_{i} - \Pi_{j}.
+\end{equation*}
+The matrix holds the difference in equilibrium return between every pair of assets, and its diagonal is zero. The strategic fund is therefore a set of pairwise bets, long the asset with the higher equilibrium return and short the one with the lower, with each bet scaled through $\Sigma^{-1}$ so that it accounts for the risk and correlation of the pair (Week 4 Lecture 1, slide 12). The tactical matrix works the same way, but its $(i,j)$ element is $(\mu_{i} - \mu_{j}) - (\Pi_{i} - \Pi_{j})$. It only bets on how far the current views have moved away from the equilibrium differences (slide 14).
+
+This gives the policy fund its role as the long-term portfolio or bogey. It is built from the minimum variance portfolio and the equilibrium views alone, which the brief notes are often reverse engineered from policy or funding constraints. The tactical fund is the active overlay on top of it. If the current views agree with equilibrium, so that $\bm{\mu} = \bm{\Pi}$, then every element of the tactical matrix is zero and $\bm{\omega}_{T} = \mathbf{0}$. The investor then holds only the policy fund. Tactical bets only appear when the views differ from equilibrium, and how far they should be allowed to differ is the question the Black-Litterman model in Question 3 answers.
+
+% ================================================================
+% Question 3 : The Black-Litterman mean and covariance
+% Needs in preamble: \usepackage{amsmath,amssymb,bm} and \numberwithin{equation}{section}
+% ================================================================
+\section*{Question 3: The Black-Litterman mean and covariance}
+\addcontentsline{toc}{section}{Question 3: The Black-Litterman mean and covariance}
+\setcounter{section}{3}
+\setcounter{subsection}{0}
+\setcounter{equation}{0}
+\label{sec:q3}
+
+The brief sets up two sources of information about the vector of expected returns $\mathbb{E}[\bm{R}]$. The first is the equilibrium,
+\begin{equation}
+  \mathbb{E}[\bm{R}] \sim N\left(\bm{\Pi}, \tau\Sigma\right),
+  \label{eq:q3-equilibrium}
+\end{equation}
+which is equation (7) in the brief. The second is a set of $k$ views on $n$ assets,
+\begin{equation}
+  \bm{y} = \bm{P}\,\mathbb{E}[\bm{R}] = \bm{V} + \bm{e}, \qquad \bm{y} \sim N\left(\bm{V}, \Omega\right),
+  \label{eq:q3-views}
+\end{equation}
+which is equation (8). Here $\bm{P}$ is a $k \times n$ matrix whose rows pick out the linear combinations of expected returns that the views are about, $\bm{V}$ is the $k \times 1$ vector of view values and $\Omega$ is the $k \times k$ covariance of the view errors.
+
+Throughout I write $\bm{x} = \mathbb{E}[\bm{R}]$ to keep the notation short, and I use the following assumptions.
+\begin{enumerate}
+  \item $\Sigma$ is positive definite and $\tau > 0$, so $\tau\Sigma$ and $(\tau\Sigma)^{-1}$ are positive definite and symmetric.
+  \item $\Omega$ is diagonal with strictly positive entries, so the views are independent and $\Omega^{-1}$ exists (Satchell and Scowcroft 2000, assumption A1).
+  \item $\bm{P}$ has full row rank $k$, so no view is a linear combination of the others.
+\end{enumerate}
+
+% ----------------------------------------------------------------
+\subsection{Certain views}
+\label{sec:q3-1}
+
+When the views hold with certainty the error is $\bm{e} = \mathbf{0}$, and the problem in equation (9) of the brief is
+\begin{equation}
+  \min_{\bm{x}} \; \left(\bm{x} - \bm{\Pi}\right)^{T}(\tau\Sigma)^{-1}\left(\bm{x} - \bm{\Pi}\right) \quad \text{s.t.} \quad \bm{P}\bm{x} = \bm{V}.
+  \label{eq:q3-certain-problem}
+\end{equation}
+The objective is the distance between $\bm{x}$ and the equilibrium, measured using $(\tau\Sigma)^{-1}$. Moving the expected return of a volatile asset away from equilibrium therefore costs less than moving a stable one. The solution is the vector of expected returns closest to equilibrium that makes the views hold exactly. Black and Litterman (1992, p.~35) state this problem and its solution but do not derive it, so I derive it here.
+
+\paragraph{Step 1: The Lagrangian.}
+There are $k$ equality constraints, one for each row of $\bm{P}\bm{x} = \bm{V}$, so I need $k$ multipliers, which I stack in the $k \times 1$ vector $\bm{\phi}$. The Lagrangian is
+\begin{equation}
+  L(\bm{x}, \bm{\phi}) = \left(\bm{x} - \bm{\Pi}\right)^{T}(\tau\Sigma)^{-1}\left(\bm{x} - \bm{\Pi}\right) - 2\bm{\phi}^{T}\left(\bm{P}\bm{x} - \bm{V}\right).
+  \label{eq:q3-lagrangian}
+\end{equation}
+The factor of 2 on the multiplier term is only for convenience. It cancels the 2 that comes from differentiating the quadratic, and any constant in front of a multiplier is absorbed into the multiplier itself.
+
+\paragraph{Step 2: First-order conditions.}
+For a symmetric matrix $M$,
+\begin{equation*}
+  \frac{\partial}{\partial\bm{x}}\left[(\bm{x} - \bm{\Pi})^{T}M(\bm{x} - \bm{\Pi})\right] = 2M(\bm{x} - \bm{\Pi}).
+\end{equation*}
+The term $\bm{\phi}^{T}\bm{P}\bm{x}$ is the scalar $(\bm{P}^{T}\bm{\phi})^{T}\bm{x}$, so its derivative with respect to $\bm{x}$ is $\bm{P}^{T}\bm{\phi}$. Differentiating \eqref{eq:q3-lagrangian} gives
+\begin{align}
+  \frac{\partial L}{\partial \bm{x}} &= 2(\tau\Sigma)^{-1}\left(\bm{x} - \bm{\Pi}\right) - 2\bm{P}^{T}\bm{\phi} = \mathbf{0}, \label{eq:q3-foc-x}\\
+  \frac{\partial L}{\partial \bm{\phi}} &= -2\left(\bm{P}\bm{x} - \bm{V}\right) = \mathbf{0}. \label{eq:q3-foc-phi}
+\end{align}
+As in Question 1, differentiating with respect to the multiplier gives back the constraint, $\bm{P}\bm{x} = \bm{V}$.
+
+\paragraph{Step 3: Expected returns in terms of $\bm{\phi}$.}
+Dividing \eqref{eq:q3-foc-x} by 2 and moving $\bm{P}^{T}\bm{\phi}$ to the right gives $(\tau\Sigma)^{-1}(\bm{x} - \bm{\Pi}) = \bm{P}^{T}\bm{\phi}$. Pre-multiplying by $\tau\Sigma$,
+\begin{equation}
+  \bm{x} = \bm{\Pi} + \tau\Sigma\bm{P}^{T}\bm{\phi}.
+  \label{eq:q3-x-phi}
+\end{equation}
+
+\paragraph{Step 4: Solving for $\bm{\phi}$.}
+Substituting \eqref{eq:q3-x-phi} into the constraint \eqref{eq:q3-foc-phi},
+\begin{align*}
+  \bm{P}\left(\bm{\Pi} + \tau\Sigma\bm{P}^{T}\bm{\phi}\right) &= \bm{V}, \\
+  \left(\bm{P}\tau\Sigma\bm{P}^{T}\right)\bm{\phi} &= \bm{V} - \bm{P}\bm{\Pi}.
+\end{align*}
+The $k \times k$ matrix $\bm{P}\tau\Sigma\bm{P}^{T}$ is invertible. For any non-zero $\bm{a} \in \mathbb{R}^{k}$, full row rank of $\bm{P}$ gives $\bm{P}^{T}\bm{a} \neq \mathbf{0}$, so $\bm{a}^{T}\bm{P}\tau\Sigma\bm{P}^{T}\bm{a} = (\bm{P}^{T}\bm{a})^{T}\tau\Sigma(\bm{P}^{T}\bm{a}) > 0$ and the matrix is positive definite. Pre-multiplying by its inverse,
+\begin{equation}
+  \bm{\phi} = \left(\bm{P}\tau\Sigma\bm{P}^{T}\right)^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right).
+  \label{eq:q3-phi}
+\end{equation}
+
+\paragraph{Step 5: The certain-view expected returns.}
+Substituting \eqref{eq:q3-phi} back into \eqref{eq:q3-x-phi} gives
+\begin{equation}
+  \boxed{\;\mathbb{E}[\bm{R}]^{*} = \bm{\Pi} + \tau\Sigma\bm{P}^{T}\left(\bm{P}\tau\Sigma\bm{P}^{T}\right)^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right)\;}
+  \label{eq:q3-certain}
+\end{equation}
+which is equation (10) in the brief.
+
+\paragraph{Step 6: Checking it is a minimum.}
+The Hessian of $L$ with respect to $\bm{x}$ is $2(\tau\Sigma)^{-1}$, which is positive definite. The objective is strictly convex, so \eqref{eq:q3-certain} is the unique minimum.
+
+\paragraph{Interpretation.}
+The term $\bm{V} - \bm{P}\bm{\Pi}$ is how far the views are from what the equilibrium already implies. If the views agree with equilibrium, $\bm{V} = \bm{P}\bm{\Pi}$, then $\mathbb{E}[\bm{R}]^{*} = \bm{\Pi}$ and nothing changes. Otherwise the matrix $\tau\Sigma\bm{P}^{T}$ spreads this difference across every asset through the covariances, so assets without a view still move if they are correlated with the assets that have one. Black and Litterman (1992, p.~36) show this with a three-asset example where an asset with no view rises by 1.9 percentage points. Following the brief, the covariance used for returns in this case stays as $\Sigma^{*} = \Sigma$.
+
+I checked each step of this part symbolically in SymPy with three assets and two views. The script is \texttt{verify\_q3\_1.py} in the code bundle.
+
+% ----------------------------------------------------------------
+\subsection{Uncertain views}
+\label{sec:q3-2}
+
+When the views are uncertain I use Bayes' theorem, equation (11) in the brief,
+\begin{equation}
+  P\left(\bm{x} \mid \bm{\Pi}\right) = \frac{P\left(\bm{\Pi} \mid \bm{x}\right) P\left(\bm{x}\right)}{P\left(\bm{\Pi}\right)}.
+  \label{eq:q3-bayes}
+\end{equation}
+Following Satchell and Scowcroft (2000, p.~140), the views play the role of the prior $P(\bm{x})$ and the equilibrium plays the role of the data through $P(\bm{\Pi} \mid \bm{x})$. The marginal $P(\bm{\Pi})$ is never modelled because it does not depend on $\bm{x}$. Strictly, the brief's notation $\mathbb{E}[\bm{R}]^{*} = P(\mathbb{E}[\bm{R}] \mid \bm{\Pi})$ sets a vector equal to a density. I read it as saying that $\mathbb{E}[\bm{R}]^{*}$ is the mean of this posterior density, which is what Section~\ref{sec:q3-2-2} computes.
+
+% ................................................................
+\subsubsection{The posterior density}
+\label{sec:q3-2-1}
+
+The multivariate normal density from Hint \#1 is
+\begin{equation*}
+  N\left(\bm{z}; \bm{m}, S\right) = \frac{1}{(2\pi)^{d/2}\,|S|^{1/2}}\exp\left[-\frac{1}{2}\left(\bm{z} - \bm{m}\right)^{T}S^{-1}\left(\bm{z} - \bm{m}\right)\right],
+\end{equation*}
+where $d$ is the dimension of $\bm{z}$.
+
+\paragraph{The likelihood.}
+By assumption (ii), $\bm{\Pi} \mid \bm{x} \sim N(\bm{x}, \tau\Sigma)$ with dimension $n$, so
+\begin{equation*}
+  P\left(\bm{\Pi} \mid \bm{x}\right) = \frac{1}{(2\pi)^{n/2}\,|\tau\Sigma|^{1/2}}\exp\left[-\frac{1}{2}\left(\bm{\Pi} - \bm{x}\right)^{T}(\tau\Sigma)^{-1}\left(\bm{\Pi} - \bm{x}\right)\right].
+\end{equation*}
+
+\paragraph{The prior.}
+By assumption (i), the views $\bm{P}\bm{x} \sim N(\bm{V}, \Omega)$ with dimension $k$, so
+\begin{equation*}
+  P\left(\bm{x}\right) = \frac{1}{(2\pi)^{k/2}\,|\Omega|^{1/2}}\exp\left[-\frac{1}{2}\left(\bm{P}\bm{x} - \bm{V}\right)^{T}\Omega^{-1}\left(\bm{P}\bm{x} - \bm{V}\right)\right].
+\end{equation*}
+When $k < n$ this prior only describes the $k$ combinations $\bm{P}\bm{x}$ and is flat in the other directions, so on its own it is improper. This causes no problem because the likelihood covers every direction of $\bm{x}$, and the posterior below is a proper normal density.
+
+\paragraph{The product.}
+Substituting both densities into \eqref{eq:q3-bayes},
+\begin{align*}
+  P\left(\bm{x} \mid \bm{\Pi}\right) = {} & \frac{1}{P(\bm{\Pi})}\cdot\frac{1}{(2\pi)^{(n+k)/2}\,|\tau\Sigma|^{1/2}\,|\Omega|^{1/2}} \\
+  & \times \exp\left[-\frac{1}{2}\left(\bm{\Pi} - \bm{x}\right)^{T}(\tau\Sigma)^{-1}\left(\bm{\Pi} - \bm{x}\right)\right] \\
+  & \times \exp\left[-\frac{1}{2}\left(\bm{P}\bm{x} - \bm{V}\right)^{T}\Omega^{-1}\left(\bm{P}\bm{x} - \bm{V}\right)\right].
+\end{align*}
+None of $(2\pi)^{-(n+k)/2}$, $|\tau\Sigma|^{-1/2}$ or $|\Omega|^{-1/2}$ contains $\bm{x}$, so I collect them into one constant,
+$c = (2\pi)^{-(n+k)/2}|\tau\Sigma|^{-1/2}|\Omega|^{-1/2}$. I use $c$ rather than the brief's $k$ to avoid a clash with the number of views. This gives
+\begin{equation}
+  \boxed{\;\begin{aligned}
+  P\left(\mathbb{E}[\bm{R}] \mid \bm{\Pi}\right) = \frac{c}{P(\bm{\Pi})}\,
+  & e^{\left[-\frac{1}{2}\left(\bm{\Pi} - \mathbb{E}[\bm{R}]\right)^{T}(\tau\Sigma)^{-1}\left(\bm{\Pi} - \mathbb{E}[\bm{R}]\right)\right]} \\
+  \times\, & e^{\left[-\frac{1}{2}\left(\bm{P}\mathbb{E}[\bm{R}] - \bm{V}\right)^{T}\Omega^{-1}\left(\bm{P}\mathbb{E}[\bm{R}] - \bm{V}\right)\right]}
+  \end{aligned}\;}
+  \label{eq:q3-posterior}
+\end{equation}
+which is equation (12) in the brief. This matches Theorem 6.2 on Week 5 Lecture 1, slide 12, and the first line of the appendix proof in Satchell and Scowcroft (2000, p.~148). I checked symbolically that everything outside the two exponentials is free of $\mathbb{E}[\bm{R}]$ (\texttt{verify\_q3\_2\_1.py}).
+
+% ................................................................
+\subsubsection{The posterior mean}
+\label{sec:q3-2-2}
+
+Since $c/P(\bm{\Pi})$ does not depend on $\bm{x}$, \eqref{eq:q3-posterior} says that $P\left(\bm{x} \mid \bm{\Pi}\right) \propto \exp\left[-\frac{1}{2}\left(Q_{1} + Q_{2}\right)\right]$, where
+\begin{align*}
+  Q_{1} &= \left(\bm{\Pi} - \bm{x}\right)^{T}(\tau\Sigma)^{-1}\left(\bm{\Pi} - \bm{x}\right), \\
+  Q_{2} &= \left(\bm{P}\bm{x} - \bm{V}\right)^{T}\Omega^{-1}\left(\bm{P}\bm{x} - \bm{V}\right).
+\end{align*}
+I rearrange $Q_{1} + Q_{2}$ into a single quadratic in $\bm{x}$.
+
+\paragraph{Step 1: Expanding the two quadratics.}
+For symmetric $M$ and vectors $\bm{a}$, $\bm{b}$, $(\bm{a} - \bm{b})^{T}M(\bm{a} - \bm{b}) = \bm{a}^{T}M\bm{a} - \bm{a}^{T}M\bm{b} - \bm{b}^{T}M\bm{a} + \bm{b}^{T}M\bm{b}$. The two middle terms are equal, because each is a scalar and $\bm{a}^{T}M\bm{b} = (\bm{a}^{T}M\bm{b})^{T} = \bm{b}^{T}M^{T}\bm{a} = \bm{b}^{T}M\bm{a}$. Using this with $M = (\tau\Sigma)^{-1}$ for $Q_{1}$, and with $M = \Omega^{-1}$ and $(\bm{P}\bm{x})^{T} = \bm{x}^{T}\bm{P}^{T}$ for $Q_{2}$,
+\begin{align*}
+  Q_{1} &= \bm{x}^{T}(\tau\Sigma)^{-1}\bm{x} - 2\bm{\Pi}^{T}(\tau\Sigma)^{-1}\bm{x} + \bm{\Pi}^{T}(\tau\Sigma)^{-1}\bm{\Pi}, \\
+  Q_{2} &= \bm{x}^{T}\bm{P}^{T}\Omega^{-1}\bm{P}\bm{x} - 2\bm{V}^{T}\Omega^{-1}\bm{P}\bm{x} + \bm{V}^{T}\Omega^{-1}\bm{V}.
+\end{align*}
+
+\paragraph{Step 2: Grouping by powers of $\bm{x}$.}
+Adding the two and collecting the quadratic, linear and constant terms,
+\begin{align*}
+  Q_{1} + Q_{2}
+  = {} & \bm{x}^{T}\left[(\tau\Sigma)^{-1} + \bm{P}^{T}\Omega^{-1}\bm{P}\right]\bm{x}
+  - 2\left[(\tau\Sigma)^{-1}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V}\right]^{T}\bm{x} \\
+  & + \left[\bm{V}^{T}\Omega^{-1}\bm{V} + \bm{\Pi}^{T}(\tau\Sigma)^{-1}\bm{\Pi}\right],
+\end{align*}
+where I used $\bm{\Pi}^{T}(\tau\Sigma)^{-1} + \bm{V}^{T}\Omega^{-1}\bm{P} = \left[(\tau\Sigma)^{-1}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V}\right]^{T}$ for the linear term. The three brackets are exactly the quantities in Hint \#2 (and in Satchell and Scowcroft 2000, p.~148),
+\begin{equation}
+  \begin{aligned}
+  \bm{H} &= (\tau\Sigma)^{-1} + \bm{P}^{T}\Omega^{-1}\bm{P}, \\
+  \bm{C} &= (\tau\Sigma)^{-1}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V}, \\
+  A &= \bm{V}^{T}\Omega^{-1}\bm{V} + \bm{\Pi}^{T}(\tau\Sigma)^{-1}\bm{\Pi},
+  \end{aligned}
+  \label{eq:q3-HCA}
+\end{equation}
+so that
+\begin{equation}
+  Q_{1} + Q_{2} = \bm{x}^{T}\bm{H}\bm{x} - 2\bm{C}^{T}\bm{x} + A.
+  \label{eq:q3-grouped}
+\end{equation}
+$\bm{H}$ is symmetric because both of its parts are. It is also positive definite. $(\tau\Sigma)^{-1}$ is positive definite, and $\bm{P}^{T}\Omega^{-1}\bm{P}$ is positive semi-definite because $\bm{a}^{T}\bm{P}^{T}\Omega^{-1}\bm{P}\bm{a} = (\bm{P}\bm{a})^{T}\Omega^{-1}(\bm{P}\bm{a}) \geq 0$ for any $\bm{a}$. So $\bm{H}^{-1}$ exists and is symmetric.
+
+\paragraph{Step 3: Completing the square.}
+I claim that
+\begin{equation}
+  \bm{x}^{T}\bm{H}\bm{x} - 2\bm{C}^{T}\bm{x} + A
+  = \left(\bm{x} - \bm{H}^{-1}\bm{C}\right)^{T}\bm{H}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right) + A - \bm{C}^{T}\bm{H}^{-1}\bm{C}.
+  \label{eq:q3-square}
+\end{equation}
+To check this I expand the first term on the right, using $(\bm{H}^{-1}\bm{C})^{T} = \bm{C}^{T}\bm{H}^{-1}$ and $\bm{H}\bm{H}^{-1} = \bm{H}^{-1}\bm{H} = I$:
+\begin{align*}
+  \left(\bm{x} - \bm{H}^{-1}\bm{C}\right)^{T}\bm{H}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right)
+  &= \bm{x}^{T}\bm{H}\bm{x} - \bm{x}^{T}\bm{H}\bm{H}^{-1}\bm{C} - \bm{C}^{T}\bm{H}^{-1}\bm{H}\bm{x} \\
+  &\qquad + \bm{C}^{T}\bm{H}^{-1}\bm{H}\bm{H}^{-1}\bm{C} \\
+  &= \bm{x}^{T}\bm{H}\bm{x} - \bm{x}^{T}\bm{C} - \bm{C}^{T}\bm{x} + \bm{C}^{T}\bm{H}^{-1}\bm{C} \\
+  &= \bm{x}^{T}\bm{H}\bm{x} - 2\bm{C}^{T}\bm{x} + \bm{C}^{T}\bm{H}^{-1}\bm{C}.
+\end{align*}
+Adding $A - \bm{C}^{T}\bm{H}^{-1}\bm{C}$ gives back the left-hand side of \eqref{eq:q3-square}.
+
+\paragraph{Step 4: Dropping the constant.}
+Substituting \eqref{eq:q3-grouped} and \eqref{eq:q3-square} into the posterior,
+\begin{align*}
+  P\left(\bm{x} \mid \bm{\Pi}\right) \propto {} &
+  \exp\left[-\frac{1}{2}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right)^{T}\bm{H}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right)\right] \\
+  & \times \exp\left[-\frac{1}{2}\left(A - \bm{C}^{T}\bm{H}^{-1}\bm{C}\right)\right].
+\end{align*}
+The second factor contains no $\bm{x}$, so it joins the normalising constant. This is the step the brief describes as terms like $A - \bm{C}^{T}\bm{H}^{-1}\bm{C}$ vanishing into the constant of integration. The brief and Satchell and Scowcroft (2000, p.~148) write this term as $A - \bm{C}^{T}\bm{H}\bm{C}$, but completing the square shows it is $\bm{C}^{T}\bm{H}^{-1}\bm{C}$. Therefore
+\begin{equation}
+  P\left(\bm{x} \mid \bm{\Pi}\right) \propto \exp\left[-\frac{1}{2}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right)^{T}\bm{H}\left(\bm{x} - \bm{H}^{-1}\bm{C}\right)\right].
+  \label{eq:q3-kernel}
+\end{equation}
+
+\paragraph{Step 5: Reading off the mean.}
+Comparing \eqref{eq:q3-kernel} with Hint \#1, it is the kernel of a normal density with mean $\bm{H}^{-1}\bm{C}$ and inverse covariance $\bm{H}$. The posterior is therefore normal and its mean is
+\begin{equation}
+  \boxed{\;\mathbb{E}[\bm{R}]^{*} = \left[(\tau\Sigma)^{-1} + \bm{P}^{T}\Omega^{-1}\bm{P}\right]^{-1}\left[(\tau\Sigma)^{-1}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V}\right]\;}
+  \label{eq:q3-mean13}
+\end{equation}
+which is equation (13) in the brief, Theorem 1 in Satchell and Scowcroft (2000) and the appendix result in Black and Litterman (1992). The mean is a precision-weighted average of the equilibrium $\bm{\Pi}$ and the views $\bm{V}$. Views held with high confidence (small $\Omega$) get a large weight $\bm{P}^{T}\Omega^{-1}\bm{P}$ and pull the mean towards them.
+
+\paragraph{Step 6: Refactoring to equation (14).}
+I now show that \eqref{eq:q3-mean13} can be written in the form of equation (14) in the brief. This needs three moves.
+
+\textit{Move 1: separating $\bm{\Pi}$.} From the definition of $\bm{H}$, $(\tau\Sigma)^{-1} = \bm{H} - \bm{P}^{T}\Omega^{-1}\bm{P}$, so
+\begin{align*}
+  \bm{C} &= (\tau\Sigma)^{-1}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V} \\
+  &= \bm{H}\bm{\Pi} - \bm{P}^{T}\Omega^{-1}\bm{P}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\bm{V} \\
+  &= \bm{H}\bm{\Pi} + \bm{P}^{T}\Omega^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right).
+\end{align*}
+Pre-multiplying by $\bm{H}^{-1}$ and using $\bm{H}^{-1}\bm{H} = I$,
+\begin{equation}
+  \mathbb{E}[\bm{R}]^{*} = \bm{H}^{-1}\bm{C} = \bm{\Pi} + \bm{H}^{-1}\bm{P}^{T}\Omega^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right).
+  \label{eq:q3-move1}
+\end{equation}
+
+\textit{Move 2: a push-through identity.} Multiplying out both sides separately,
+\begin{align*}
+  \bm{P}^{T}\Omega^{-1}\left(\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right)
+  &= \bm{P}^{T}\Omega^{-1}\bm{P}\tau\Sigma\bm{P}^{T} + \bm{P}^{T}\Omega^{-1}\Omega \\
+  &= \bm{P}^{T}\Omega^{-1}\bm{P}\tau\Sigma\bm{P}^{T} + \bm{P}^{T}, \\
+  \bm{H}\,\tau\Sigma\bm{P}^{T}
+  &= \left[(\tau\Sigma)^{-1} + \bm{P}^{T}\Omega^{-1}\bm{P}\right]\tau\Sigma\bm{P}^{T} \\
+  &= \bm{P}^{T} + \bm{P}^{T}\Omega^{-1}\bm{P}\tau\Sigma\bm{P}^{T}.
+\end{align*}
+The two right-hand sides are the same, so
+\begin{equation}
+  \bm{P}^{T}\Omega^{-1}\left(\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right) = \bm{H}\,\tau\Sigma\bm{P}^{T}.
+  \label{eq:q3-push}
+\end{equation}
+
+\textit{Move 3: rearranging.} The $k \times k$ matrix $\bm{P}\tau\Sigma\bm{P}^{T} + \Omega$ is invertible because it is the sum of a positive semi-definite matrix and the positive definite $\Omega$. Pre-multiplying \eqref{eq:q3-push} by $\bm{H}^{-1}$ and post-multiplying it by $(\bm{P}\tau\Sigma\bm{P}^{T} + \Omega)^{-1}$ gives
+\begin{equation}
+  \bm{H}^{-1}\bm{P}^{T}\Omega^{-1} = \tau\Sigma\bm{P}^{T}\left(\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right)^{-1}.
+  \label{eq:q3-key}
+\end{equation}
+This is the special case of the Woodbury matrix identity needed here. Substituting \eqref{eq:q3-key} into \eqref{eq:q3-move1},
+\begin{equation}
+  \boxed{\;\mathbb{E}[\bm{R}]^{*} = \bm{\Pi} + (\tau\Sigma)\bm{P}^{T}\left[\bm{P}(\tau\Sigma)\bm{P}^{T} + \Omega\right]^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right)\;}
+  \label{eq:q3-mean14}
+\end{equation}
+which is equation (14) in the brief.
+
+\paragraph{Step 7: Recovering the certain-view result.}
+Setting $\Omega = 0$ in \eqref{eq:q3-mean14} gives $\mathbb{E}[\bm{R}]^{*} = \bm{\Pi} + \tau\Sigma\bm{P}^{T}\left(\bm{P}\tau\Sigma\bm{P}^{T}\right)^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right)$, which is the certain-view solution \eqref{eq:q3-certain}. The inverse still exists at $\Omega = 0$ because $\bm{P}\tau\Sigma\bm{P}^{T}$ is positive definite (Section~\ref{sec:q3-1}, Step 4). This step has to be done with \eqref{eq:q3-mean14} and not with \eqref{eq:q3-mean13}, because \eqref{eq:q3-mean13} contains $\Omega^{-1}$, which does not exist when $\Omega = 0$. This is the reason for refactoring the mean. Equation \eqref{eq:q3-mean14} also shows the role of confidence directly. As $\Omega$ grows, $\left[\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right]^{-1}$ shrinks and the posterior mean falls back to $\bm{\Pi}$. As $\Omega \to 0$ the views are imposed exactly. Uncertain views therefore sit between the equilibrium and the certain-view solution of Section~\ref{sec:q3-1}.
+
+% ................................................................
+\subsubsection{The posterior covariance}
+\label{sec:q3-2-3}
+
+The kernel \eqref{eq:q3-kernel} has the form $\exp\left[-\frac{1}{2}(\bm{x} - \bm{m})^{T}S^{-1}(\bm{x} - \bm{m})\right]$ from Hint \#1, with $S^{-1} = \bm{H}$. The covariance of the posterior is therefore $S = \bm{H}^{-1}$,
+\begin{equation}
+  \boxed{\;\Sigma^{*} = \left[(\tau\Sigma)^{-1} + \bm{P}^{T}\Omega^{-1}\bm{P}\right]^{-1}\;}
+  \label{eq:q3-cov}
+\end{equation}
+which is equation (15) in the brief and equation (A4) in Satchell and Scowcroft (2000). Equivalently, the Hessian of $\frac{1}{2}(Q_{1} + Q_{2})$ with respect to $\bm{x}$ is $\bm{H}$, and for a normal density the inverse of this Hessian is the covariance. Satchell and Scowcroft (2000, p.~141) point out that Black and Litterman did not report this formula. Week 5 Lecture 1, slide 13, gives the posterior as $N(\bm{H}^{-1}\bm{C}, \bm{H})$ in equation 20, but its own equation 22 and the derivation above show the covariance is $\bm{H}^{-1}$.
+
+Applying the Woodbury identity to $\bm{H}^{-1}$ gives the equivalent form
+\begin{equation*}
+  \Sigma^{*} = \tau\Sigma - \tau\Sigma\bm{P}^{T}\left(\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right)^{-1}\bm{P}\tau\Sigma,
+\end{equation*}
+which shows that the uncertainty about $\mathbb{E}[\bm{R}]$ after adding the views is the equilibrium uncertainty $\tau\Sigma$ minus a positive semi-definite amount. Adding views can only reduce the uncertainty about expected returns, and confident views reduce it more. $\Sigma^{*}$ is the uncertainty in the estimate of the mean, not the covariance of returns themselves. In Question 4 I follow the brief and keep the equilibrium covariance $\Sigma$ for the returns.
+
+I checked every step of Sections~\ref{sec:q3-2-2} and \ref{sec:q3-2-3} in SymPy, in the script \texttt{verify\_q3\_2\_2.py}. The expansion and grouping are checked fully symbolically with three assets and two views. The steps that need a matrix inverse are checked fully symbolically with two assets and one view, and in exact rational arithmetic with four assets and two views.
+
+% ================================================================
+% Question 4 : The Black-Litterman portfolio weights
+% Needs in preamble: \usepackage{amsmath,amssymb,bm} and \numberwithin{equation}{section}
+% ================================================================
+\section*{\raggedright Question 4: The Black-Litterman portfolio weights}
+\addcontentsline{toc}{section}{Question 4: The Black-Litterman portfolio weights}
+\setcounter{section}{4}
+\setcounter{subsection}{0}
+\setcounter{equation}{0}
+\label{sec:q4}
+
+The aim is to combine the two results so far. Question 1 gives the optimal mean-variance weights for any vector of expected returns, and Question 3 gives a better vector of expected returns, the Black-Litterman posterior mean $\mathbb{E}[\bm{R}]^{*}$. As before, $C = \mathbf{1}^{T}\Sigma^{-1}\mathbf{1} > 0$.
+
+\paragraph{Step 1: The separation theorem holds for any expected-return vector.}
+The derivation of \eqref{eq:q1-separation} in Question 1 used only that $\Sigma$ is positive definite, that $\gamma > 0$ and that $\bm{\mu}$ is an $n \times 1$ vector. It used no other property of $\bm{\mu}$. The result therefore holds with $\bm{\mu}$ replaced by any $n \times 1$ vector of expected returns, including the posterior mean $\mathbb{E}[\bm{R}]^{*}$ from \eqref{eq:q3-mean13}, or equivalently \eqref{eq:q3-mean14}.
+
+\paragraph{Step 2: Which covariance to use.}
+The brief asks me to keep the current equilibrium covariance $\Sigma$. Question 3 also produced $\Sigma^{*}$ in \eqref{eq:q3-cov}, but $\Sigma^{*}$ measures the uncertainty in the estimate of the mean, not the covariance of the returns the portfolio is exposed to. Week 5 Lecture 1, slide 15, makes the same choice: ``we can choose to ignore the updated covariance matrix, modify the benchmark portfolio and use the revised expected return''. Using $\Sigma$ also means the minimum variance portfolio, which depends only on the covariance, is the same one used in Questions 1 and 2.
+
+\paragraph{Step 3: Substituting the posterior mean.}
+Replacing $\bm{\mu}$ with $\mathbb{E}[\bm{R}]^{*}$ in \eqref{eq:q1-separation} and keeping $\Sigma$,
+\begin{equation*}
+  \bm{\omega}^{*}_{BL} = \frac{\Sigma^{-1}\mathbf{1}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}} + \frac{1}{\gamma}\Sigma^{-1}\left(\mathbb{E}[\bm{R}]^{*} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbb{E}[\bm{R}]^{*}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right).
+\end{equation*}
+The first term does not contain the expected returns, so it is still the benchmark fund $\bm{\omega}_{B}$ from \eqref{eq:q2-wB}. This gives
+\begin{equation}
+  \boxed{\;\bm{\omega}^{*}_{BL} = \bm{\omega}_{B} + \frac{1}{\gamma}\Sigma^{-1}\left(\mathbb{E}[\bm{R}]^{*} - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbb{E}[\bm{R}]^{*}}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right)\;}
+  \label{eq:q4-wBL}
+\end{equation}
+which is equation (16) in the brief and equation 33 on Week 5 Lecture 1, slide 15.
+
+\paragraph{Step 4: The budget constraint still holds.}
+Pre-multiplying by $\mathbf{1}^{T}$,
+\begin{equation*}
+  \mathbf{1}^{T}\bm{\omega}^{*}_{BL}
+  = \frac{C}{C} + \frac{1}{\gamma}\left(\mathbf{1}^{T}\Sigma^{-1}\mathbb{E}[\bm{R}]^{*} - C\,\frac{\mathbf{1}^{T}\Sigma^{-1}\mathbb{E}[\bm{R}]^{*}}{C}\right)
+  = 1 + 0 = 1.
+\end{equation*}
+The Black-Litterman portfolio is fully invested for every $\gamma$, and the tilt away from the benchmark fund is zero-cost, exactly as in Question 1.
+
+\paragraph{Step 5: The Black-Litterman portfolio in terms of the three funds.}
+The second term of \eqref{eq:q4-wBL} is $\frac{1}{\gamma}f(\mathbb{E}[\bm{R}]^{*})$, where $f$ is the linear function defined in \eqref{eq:q2-f}. Writing $\mathbb{E}[\bm{R}]^{*} = \bm{\Pi} + \left(\mathbb{E}[\bm{R}]^{*} - \bm{\Pi}\right)$ and using the linearity shown in Question 2,
+\begin{equation*}
+  \frac{1}{\gamma}f\left(\mathbb{E}[\bm{R}]^{*}\right) = \frac{1}{\gamma}f\left(\bm{\Pi}\right) + \frac{1}{\gamma}f\left(\mathbb{E}[\bm{R}]^{*} - \bm{\Pi}\right).
+\end{equation*}
+The first part is the strategic fund $\bm{\omega}_{S}$ from \eqref{eq:q2-wS}. The second part has the same form as the tactical fund \eqref{eq:q2-wT}, with the views $\bm{\mu}$ replaced by the Black-Litterman posterior mean. So
+\begin{equation}
+  \bm{\omega}^{*}_{BL} = \underbrace{\bm{\omega}_{B} + \bm{\omega}_{S}}_{\bm{\omega}_{P}} + \underbrace{\frac{1}{\gamma}\Sigma^{-1}\left(\left(\mathbb{E}[\bm{R}]^{*} - \bm{\Pi}\right) - \mathbf{1}\,\frac{\mathbf{1}^{T}\Sigma^{-1}\left(\mathbb{E}[\bm{R}]^{*} - \bm{\Pi}\right)}{\mathbf{1}^{T}\Sigma^{-1}\mathbf{1}}\right)}_{\bm{\omega}_{A}},
+  \label{eq:q4-split}
+\end{equation}
+where $\bm{\omega}_{P}$ is the policy fund and $\bm{\omega}_{A} = \bm{\omega}^{*}_{BL} - \bm{\omega}_{P}$ are the active bets. This matches equation 34 on Week 5 Lecture 1, slide 15. The slide subtracts what it calls the benchmark $\bm{\omega}_{B} = \bm{\omega}_{G} + \bm{\omega}_{S}$, which in the brief's notation is the policy fund $\bm{\omega}_{P}$. By the same argument as Step 8 of Question 2, $\mathbf{1}^{T}\bm{\omega}_{A} = 0$, so the active bets are zero-cost.
+
+\paragraph{Interpretation.}
+The split in \eqref{eq:q4-split} shows what changes when the posterior mean from Question 3 is used. The policy fund is fixed by the covariance and the equilibrium views, and the only active bets come from the distance between the posterior mean and equilibrium. From \eqref{eq:q3-mean14} this distance is
+\begin{equation*}
+  \mathbb{E}[\bm{R}]^{*} - \bm{\Pi} = \tau\Sigma\bm{P}^{T}\left[\bm{P}\tau\Sigma\bm{P}^{T} + \Omega\right]^{-1}\left(\bm{V} - \bm{P}\bm{\Pi}\right).
+\end{equation*}
+If the views agree with equilibrium, $\bm{V} = \bm{P}\bm{\Pi}$, then $\mathbb{E}[\bm{R}]^{*} = \bm{\Pi}$, the active bets are zero and the investor holds the policy fund. If the views disagree with equilibrium but are held with little confidence (large $\Omega$), the distance is small and so are the active bets. Large active bets need views that are both different from equilibrium and held with confidence. This is the main difference from using raw sample means as $\bm{\mu}$ in Question 1, where every difference between the sample mean and equilibrium is traded at full size. Black and Litterman (1992, Table VIII) show how a small change in raw expected returns can produce extreme weights, and the posterior mean is designed to prevent this.
+
+Nothing in \eqref{eq:q4-wBL} stops individual weights from being negative. Like the tilt in Question 1, the active bets get larger as $\gamma$ gets smaller, so a small enough $\gamma$ will give short positions. In Part II the portfolio must be fully invested with no short selling, so the risk aversion has to be chosen with this in mind, and the long-only constraint has to be enforced in the optimisation.
+
+I checked these steps in SymPy (\texttt{verify\_q4.py}). The substitution, the budget and the split into policy and active funds are checked fully symbolically with three assets. I also checked in exact rational arithmetic, with four assets and two views and $\mathbb{E}[\bm{R}]^{*}$ computed from \eqref{eq:q3-mean14}, that views equal to equilibrium give exactly the policy fund.
+\end{document}

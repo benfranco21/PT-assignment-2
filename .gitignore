@@ -1,0 +1,33 @@
+# MATLAB
+*.asv
+*.m~
+slprj/
+*.mex*
+
+# macOS / Windows
+.DS_Store
+._*
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+
+# Generated outputs (folders kept via .gitkeep)
+outputs/**/*
+!outputs/**/
+!outputs/**/.gitkeep
+data/derived/*
+!data/derived/.gitkeep
