@@ -7,7 +7,7 @@
 %[text] **Purpose:** Build the Black-Litterman portfolio for a single decision date (the first rebalance of the Assignment 1 rolling window) and print every intermediate quantity: covariance, equilibrium returns, views, posterior, raw weights, tracking-error and no-short controls, and the next month's realised return. The full rolling backtest in the next script repeats exactly these steps every month.
 %[text] **Inputs:** data/raw/PT-DATA-ALBI-JIBAR-JSEIND-Daily-1994-2017.xlsx (through loadA2Data).
 %[text] **Outputs:** printed tables, `outputs/figures/A2_01_expected_returns.png`, `outputs/figures/A2_01_weights.png`
-%[text] **Dependencies:** base MATLAB only. functions/data/loadA2Data.m, functions/portfolio/blWeights.m, functions/portfolio/applyActiveControls.m, and Tim Gebbie's blackLittermanPosterior.m and data functions (BSD-3-Clause, copied unchanged).
+%[text] **Dependencies:** base MATLAB only. functions/data/loadA2Data.m, functions/portfolio/blWeights.m, functions/portfolio/applyActiveControls.m, functions/portfolio/calibrateGamma.m, and Tim Gebbie's blackLittermanPosterior.m and data functions (BSD-3-Clause, copied unchanged).
 %[text] ### Set up: find the project folder and add the functions to the path
 %[text] This block lets the script run on its own from any current folder.
 projectRoot = fileparts(fileparts(mfilename('fullpath')));
@@ -37,9 +37,10 @@ Sigma = cov(A2.R(windowRows, :));
 riskTable = table(tickers', 100*sqrt(periodsPerYear*diag(Sigma)), ...
     'VariableNames', {'Asset', 'AnnualVolatility_pct'})
 %[text] ## 4. The benchmark and the equilibrium returns
-%[text] The benchmark (strategic portfolio) is equal weight. The equilibrium returns are reverse engineered from it: $\Pi = \gamma \Sigma \omega_B$. If the investor has no views, the separation theorem (equation 16 with $\Pi$ in place of $\mathbb{E}[R]^*$) must give back the benchmark exactly. That is the first check.
+%[text] The benchmark (strategic portfolio) is equal weight. The equilibrium returns are reverse engineered from it: $\Pi = \gamma \Sigma \omega_B$. If the investor has no views, the separation theorem (equation 16 with $\Pi$ in place of $\mathbb{E}[R]^*$) must give back the benchmark exactly. That is the first check. The risk aversion $\gamma$ is the benchmark's mean return divided by its variance over the window (see `A2_02_choose_gamma.m`).
 wB = ones(1, n) / n;    % equal-weight benchmark
-gamma = 3;              % PROVISIONAL risk aversion (Tim's Lecture 003 value). Chosen properly by the grid in a later script.
+gamma = calibrateGamma(A2.R(windowRows, :), wB);   % benchmark-implied risk aversion, motivated in A2_02
+fprintf('Risk aversion gamma = %.4f (benchmark mean / benchmark variance over the window)\n', gamma);
 Pi = gamma * Sigma * wB';
 wFromPi = blWeights(Sigma, Pi, gamma);
 fprintf('Check: weights from Pi reproduce the benchmark, max difference = %.2e\n', max(abs(wFromPi - wB)));
