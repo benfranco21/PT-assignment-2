@@ -1,4 +1,4 @@
-# PT-assignment-2
+# PT_A2_2026_FRNBEN003_v1.0
 
 STA4028Z Portfolio Theory, Assignment 2: Backtesting a Black-Litterman Portfolio
 (University of Cape Town, lecturer Tim Gebbie).
@@ -8,16 +8,16 @@ STA4028Z Portfolio Theory, Assignment 2: Backtesting a Black-Litterman Portfolio
 
 ## Requirements
 
-- MATLAB: tested on MATLAB R2026a. Part II uses base MATLAB only; no toolboxes are needed at present (this section will be updated if that changes).
+- MATLAB: tested on MATLAB R2026a. Part II uses base MATLAB only; no toolboxes are needed at present.
 - Python 3.9 or later, for the Part I SymPy checks only. Tested on Python 3.9.6 with `sympy==1.14.0` and `mpmath==1.3.0`.
 - An internet connection is needed once, to install the two Python packages.
 
 ## Part II: MATLAB backtest
 
 1. Open MATLAB.
-2. Change the current folder to the repository root (the folder that contains `run_all.m`):
+2. Change the current folder to the unzipped folder (the one that contains `run_all.m`):
    ```matlab
-   cd('path/to/PT-assignment-2')
+   cd('path/to/PT_A2_2026_FRNBEN003_v1.0')
    ```
 3. Run:
    ```matlab
@@ -37,7 +37,7 @@ The Part II scripts have not been added yet, so at present only the log is produ
 
 ## Part I: SymPy verification checks
 
-Run these commands from the repository root.
+Run these commands from the unzipped folder (the one that contains `run_all.m`).
 
 macOS / Linux:
 
@@ -69,25 +69,19 @@ The script prints a timestamp, the Python and SymPy versions, then every check a
 | `startup.m` | Adds `functions/` and its subfolders to the MATLAB path. |
 | `LICENSE-NOTICE.md` | Attribution for material from Tim Gebbie's public repository. |
 | `data/raw/` | Original data file and `DATA-CHECKSUM.txt`. Not modified by any code. |
-| `data/derived/` | Data produced by the code. Contents are not tracked by git. |
+| `data/derived/` | Intermediate data written by the code (created by `run_all`). |
 | `functions/data/` | MATLAB functions for loading and cleaning data. |
 | `functions/portfolio/` | MATLAB functions for portfolio construction. |
 | `functions/performance/` | MATLAB functions for performance measures. |
 | `functions/diagnostics/` | MATLAB functions for diagnostic checks. |
 | `scripts/` | MATLAB scripts for Part II, called by `run_all.m`. |
 | `verification/` | Part I SymPy scripts, `requirements.txt` and `run_all_checks.py`. |
-| `outputs/figures/` | Figures produced by the code. Not tracked by git. |
-| `outputs/tables/` | Tables produced by the code. Not tracked by git. |
-| `outputs/logs/` | Run logs from `run_all`. Not tracked by git. |
-| `report/` | LaTeX source of the report; `report/Figures/` holds its images. |
+| `outputs/figures/` | Figures produced by the code. |
+| `outputs/tables/` | Tables produced by the code. |
+| `outputs/logs/` | Run logs from `run_all`. |
 
 ## Naming convention and version
 
 - Version identifier: `PT_A2_2026_FRNBEN003_v1.0` (project, year, student number, version).
-- The report file is named with the version identifier.
 - Every `.m` and `.py` file starts with a header giving its file name, project, version, author, date, purpose, inputs, outputs and dependencies.
 - Python check scripts are named `verify_q<question>.py`, for example `verify_q3_2_1.py` for Question 3.2.1.
-
-## Report
-
-The report is `report/PT_A2_2026_FRNBEN003_v1.0.tex`. Compile it from inside the `report/` folder (it loads `Figures/logo.jpg`).

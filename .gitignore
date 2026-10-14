@@ -31,3 +31,6 @@ outputs/**/*
 !outputs/**/.gitkeep
 data/derived/*
 !data/derived/.gitkeep
+
+# Submission zip built by build_submission.m
+submission/

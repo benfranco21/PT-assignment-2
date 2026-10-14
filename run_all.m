@@ -10,7 +10,7 @@
 %   Inputs:       data/raw/PT-DATA-ALBI-JIBAR-JSEIND-Daily-1994-2017.xlsx,
 %                 data/raw/DATA-CHECKSUM.txt
 %   Outputs:      outputs/logs/run_log_<timestamp>.txt (diary of this run);
-%                 outputs/figures/, outputs/tables/ (filled by the Part II scripts).
+%                 outputs/figures/, outputs/tables/, data/derived/ (filled by the Part II scripts).
 %   Dependencies: Base MATLAB only (no toolboxes). Uses startup.m.
 %
 %   Usage: run_all   (the current folder does not matter)
@@ -22,9 +22,10 @@ projectRoot = fileparts(mfilename('fullpath'));
 run(fullfile(projectRoot, 'startup.m'));
 
 % --- Output folders --------------------------------------------------------
-outDirs = {'figures', 'tables', 'logs'};
+outDirs = {fullfile('outputs', 'figures'), fullfile('outputs', 'tables'), ...
+           fullfile('outputs', 'logs'), fullfile('data', 'derived')};
 for i = 1:numel(outDirs)
-    d = fullfile(projectRoot, 'outputs', outDirs{i});
+    d = fullfile(projectRoot, outDirs{i});
     if ~isfolder(d), mkdir(d); end
 end
 
