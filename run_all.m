@@ -74,10 +74,9 @@ if ~strcmp(actual, expected)
 end
 fprintf('Raw data checksum OK (SHA-256 %s)\n', actual);
 
-% === PART II SCRIPTS (PLACEHOLDER) ========================================
-% No Part II scripts exist yet. Add calls here, in order, e.g.:
-%   run(fullfile(projectRoot, 'scripts', 'step01_load_data.m'));
-fprintf('Part II scripts: none yet (placeholder).\n');
+% === PART II SCRIPTS ======================================================
+% Scripts run in order. The full backtest scripts will be added after this one.
+run(fullfile(projectRoot, 'scripts', 'A2_01_one_rebalance.m'));
 % === END PART II SCRIPTS ==================================================
 
 fprintf('run_all completed\n');
