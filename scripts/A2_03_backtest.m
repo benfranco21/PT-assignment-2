@@ -159,18 +159,23 @@ lg = legend(ax, {'Equal-weight benchmark', 'Black-Litterman', 'A1 rolling tangen
 lg.Layout.Tile = 'north';
 exportgraphics(fig, fullfile(figureFolder, 'A2_03_weights_bars.png'), 'Resolution', 200);
 %[text] ## 7. Figure: weights over time
-%[text] The Black-Litterman fund holds eight of the nine assets every month. The no-short rule always sets exactly one asset, the one the views most want to sell, to zero. The tangency portfolio, built from sample means alone, holds three to five assets at a time and switches between them.
+%[text] The Black-Litterman fund holds eight of the nine assets every month. The no-short rule always sets exactly one asset, the one the views most want to sell, to zero. Which asset that is changes with the views (most often J520, J510 or ALBI). The tangency portfolio, built from sample means alone, holds three to five assets at a time and switches between them.
 fprintf('Assets held: Black-Litterman %.2f on average (min %d, max %d), tangency %.2f (min %d, max %d).\n', ...
     mean(sum(wBL > 1e-10, 2)), min(sum(wBL > 1e-10, 2)), max(sum(wBL > 1e-10, 2)), ...
     mean(sum(wTan > 1e-10, 2)), min(sum(wTan > 1e-10, 2)), max(sum(wTan > 1e-10, 2)));
+% Nine distinct colours (MATLAB's default palette has only seven and would repeat two).
+assetColours = [0.12 0.47 0.71; 1.00 0.50 0.05; 0.17 0.63 0.17; 0.84 0.15 0.16; 0.58 0.40 0.74; ...
+    0.55 0.34 0.29; 0.89 0.47 0.76; 0.50 0.50 0.50; 0.74 0.74 0.13];
+assert(size(unique(assetColours, 'rows'), 1) == n, 'Asset colours are not distinct.');
 fig = figure('Position', [100 100 1000 750]);
+colororder(fig, assetColours);
 tl = tiledlayout(fig, 2, 1, 'TileSpacing', 'compact', 'Padding', 'compact');
 ax = nexttile(tl);
 area(ax, holdDates, 100*wBL);
-ylim(ax, [0 100]); ylabel(ax, 'Weight (%)'); title(ax, 'Black-Litterman fund'); grid(ax, 'on')
+ylim(ax, [0 100]); xlim(ax, [holdDates(1) holdDates(end)]); ylabel(ax, 'Weight (%)'); title(ax, 'Black-Litterman fund'); grid(ax, 'on')
 ax = nexttile(tl);
 area(ax, holdDates, 100*wTan);
-ylim(ax, [0 100]); ylabel(ax, 'Weight (%)'); title(ax, 'Assignment 1 rolling tangency portfolio'); grid(ax, 'on')
+ylim(ax, [0 100]); xlim(ax, [holdDates(1) holdDates(end)]); ylabel(ax, 'Weight (%)'); title(ax, 'Assignment 1 rolling tangency portfolio'); grid(ax, 'on')
 lg = legend(ax, cellstr(tickers), 'Orientation', 'horizontal');
 lg.Layout.Tile = 'south';
 exportgraphics(fig, fullfile(figureFolder, 'A2_03_weights_over_time.png'), 'Resolution', 200);
