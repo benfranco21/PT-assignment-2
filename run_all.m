@@ -77,6 +77,7 @@ fprintf('Raw data checksum OK (SHA-256 %s)\n', actual);
 % === PART II SCRIPTS ======================================================
 % Scripts run in order. The full backtest scripts will be added after this one.
 run(fullfile(projectRoot, 'scripts', 'A2_01_one_rebalance.m'));
+run(fullfile(projectRoot, 'scripts', 'A2_02_choose_gamma.m'));
 % === END PART II SCRIPTS ==================================================
 
 fprintf('run_all completed\n');

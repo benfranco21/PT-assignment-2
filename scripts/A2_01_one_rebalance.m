@@ -77,7 +77,7 @@ exportgraphics(gcf, fullfile(figureFolder, 'A2_01_expected_returns.png'), 'Resol
 wRaw = blWeights(Sigma, ERstar, gamma);
 %[text] ## 8. Apply the controls: tracking-error ceiling, then no short selling
 %[text] Both controls shrink the active bets $\omega - \omega_B$ by a single factor, so the direction of the bets from equation (16) is kept (Lecture 003).
-teCeiling = 0.10;   % top of the brief's 3% to 10% range
+teCeiling = 0.05;   % 5% cap, inside the brief's 3% to 10% range (motivated in A2_02)
 ctrl = applyActiveControls(wB, wRaw, Sigma, teCeiling, periodsPerYear);
 weightsTable = table(tickers', 100*wB', 100*wRaw', 100*ctrl.Weights', 100*ctrl.Active', ...
     'VariableNames', {'Asset', 'Benchmark_pct', 'RawBL_pct', 'FinalBL_pct', 'Active_pct'})
@@ -87,7 +87,7 @@ figure
 bar(categorical(tickers, tickers), 100*[wB; ctrl.Weights]')
 ylabel('Weight (%)')
 title(sprintf('Benchmark and Black-Litterman weights held over %s', string(A2.Dates(t+1), 'MMM yyyy')))
-legend({'Equal-weight benchmark', 'Black-Litterman (after controls)'}, 'Location', 'best')
+legend({'Equal-weight benchmark', 'Black-Litterman (after controls)'}, 'Location', 'northoutside', 'Orientation', 'horizontal')
 grid on
 exportgraphics(gcf, fullfile(figureFolder, 'A2_01_weights.png'), 'Resolution', 200);
 %[text] ## 9. What the fund earned over the next month
